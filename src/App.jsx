@@ -1,10 +1,12 @@
 import { motion, useScroll, useSpring } from "framer-motion";
+import { ThemeProvider } from "./context/ThemeContext";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import About from "./components/About";
 import Skills from "./components/Skills";
 import Experience from "./components/Experience";
 import Projects from "./components/Projects";
+import Achievements from "./components/Achievements";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 
@@ -17,23 +19,26 @@ export default function App() {
   });
 
   return (
-    <div className="relative min-h-screen">
-      {/* Scroll progress bar */}
-      <motion.div
-        style={{ scaleX }}
-        className="fixed inset-x-0 top-0 z-[60] h-1 origin-left bg-gradient-to-r from-accent via-accent-glow to-accent-cyan"
-      />
+    <ThemeProvider>
+      <div className="relative min-h-screen">
+        {/* Scroll progress bar */}
+        <motion.div
+          style={{ scaleX }}
+          className="fixed inset-x-0 top-0 z-[60] h-1 origin-left bg-gradient-to-r from-accent via-accent-glow to-accent-cyan"
+        />
 
-      <Navbar />
-      <main>
-        <Hero />
-        <About />
-        <Skills />
-        <Experience />
-        <Projects />
-        <Contact />
-      </main>
-      <Footer />
-    </div>
+        <Navbar />
+        <main>
+          <Hero />
+          <About />
+          <Skills />
+          <Experience />
+          <Projects />
+          <Achievements />
+          <Contact />
+        </main>
+        <Footer />
+      </div>
+    </ThemeProvider>
   );
 }

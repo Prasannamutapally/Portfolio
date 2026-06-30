@@ -1,25 +1,7 @@
 import { motion } from "framer-motion";
-import { FaCode, FaMobileScreenButton, FaServer } from "react-icons/fa6";
-import { personal } from "../data/portfolio";
+import { FaCheck } from "react-icons/fa6";
+import { personal, aboutAreas } from "../data/portfolio";
 import { fadeUp, stagger, viewport } from "./motionPresets";
-
-const highlights = [
-  {
-    icon: FaCode,
-    title: "Frontend Engineering",
-    text: "Pixel-perfect, accessible React.js interfaces with smooth interactions and clean state management.",
-  },
-  {
-    icon: FaServer,
-    title: "Backend & APIs",
-    text: "Robust ASP.NET Core services, secure REST APIs and well-modeled data layers on Azure & SQL.",
-  },
-  {
-    icon: FaMobileScreenButton,
-    title: "Mobile Apps",
-    text: "Cross-platform React Native apps shipped to the App Store and Google Play with native polish.",
-  },
-];
 
 export default function About() {
   return (
@@ -34,73 +16,50 @@ export default function About() {
         >
           {/* Left: heading + summary */}
           <div className="lg:col-span-2">
-            <motion.p
-              variants={fadeUp}
-              className="text-sm font-semibold uppercase tracking-widest text-accent-light"
-            >
+            <motion.p variants={fadeUp} className="eyebrow">
               About me
             </motion.p>
             <motion.h2 variants={fadeUp} className="section-title mt-3">
-              Building across the <span className="gradient-text">full stack</span>
+              Owning products{" "}
+              <span className="gradient-text">end to end</span>
             </motion.h2>
             <motion.p
               variants={fadeUp}
-              className="mt-6 leading-relaxed text-slate-400"
+              className="mt-6 leading-relaxed text-fg-muted"
             >
-              {personal.summary}
+              {personal.intro}
             </motion.p>
-
-            <motion.dl
+            <motion.p
               variants={fadeUp}
-              className="mt-8 grid grid-cols-2 gap-4 text-sm"
+              className="mt-4 leading-relaxed text-fg-muted"
             >
-              <div>
-                <dt className="text-slate-500">Experience</dt>
-                <dd className="mt-1 font-semibold text-white">
-                  {personal.yearsExperience}+ years
-                </dd>
-              </div>
-              <div>
-                <dt className="text-slate-500">Location</dt>
-                <dd className="mt-1 font-semibold text-white">
-                  {personal.location}
-                </dd>
-              </div>
-              <div>
-                <dt className="text-slate-500">Focus</dt>
-                <dd className="mt-1 font-semibold text-white">Web & Mobile</dd>
-              </div>
-              <div>
-                <dt className="text-slate-500">Email</dt>
-                <dd className="mt-1 font-semibold text-white break-all">
-                  {personal.email}
-                </dd>
-              </div>
-            </motion.dl>
+              I have close to {personal.yearsExperience} years of experience
+              developing enterprise software across multiple domains, and I take
+              ownership of complete products from planning to deployment.
+            </motion.p>
           </div>
 
-          {/* Right: highlight cards */}
-          <div className="grid gap-5 sm:grid-cols-1 lg:col-span-3">
-            {highlights.map((h) => (
-              <motion.div
-                key={h.title}
-                variants={fadeUp}
-                whileHover={{ y: -4 }}
-                className="card group flex items-start gap-5 p-6 transition-colors hover:border-accent-light/40"
-              >
-                <div className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-gradient-to-br from-accent/30 to-accent-glow/20 text-xl text-accent-light">
-                  <h.icon />
-                </div>
-                <div>
-                  <h3 className="text-lg font-semibold text-white">
-                    {h.title}
-                  </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-slate-400">
-                    {h.text}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
+          {/* Right: areas of expertise */}
+          <div className="lg:col-span-3">
+            <motion.div variants={fadeUp} className="card p-7 sm:p-8">
+              <h3 className="text-lg font-semibold text-fg">
+                I work across the entire software development lifecycle
+              </h3>
+              <div className="mt-6 grid gap-3 sm:grid-cols-2">
+                {aboutAreas.map((area) => (
+                  <motion.div
+                    key={area}
+                    variants={fadeUp}
+                    className="flex items-center gap-3 rounded-xl border border-line/70 bg-surface-2/60 px-4 py-3 text-sm font-medium text-fg dark:border-white/5 dark:bg-white/[0.03]"
+                  >
+                    <span className="grid h-6 w-6 shrink-0 place-items-center rounded-full bg-accent/15 text-xs text-accent">
+                      <FaCheck />
+                    </span>
+                    {area}
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
           </div>
         </motion.div>
       </div>

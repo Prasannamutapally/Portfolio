@@ -1,15 +1,20 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+  darkMode: "class",
   content: ["./index.html", "./src/**/*.{js,jsx}"],
   theme: {
     extend: {
       colors: {
-        ink: {
-          900: "#0a0a0f",
-          800: "#0f0f17",
-          700: "#15151f",
-          600: "#1c1c28",
-        },
+        // Semantic tokens driven by CSS variables (switch with .dark on <html>)
+        bg: "rgb(var(--bg) / <alpha-value>)",
+        "bg-soft": "rgb(var(--bg-soft) / <alpha-value>)",
+        surface: "rgb(var(--surface) / <alpha-value>)",
+        "surface-2": "rgb(var(--surface-2) / <alpha-value>)",
+        fg: "rgb(var(--fg) / <alpha-value>)",
+        "fg-muted": "rgb(var(--fg-muted) / <alpha-value>)",
+        "fg-subtle": "rgb(var(--fg-subtle) / <alpha-value>)",
+        line: "rgb(var(--line) / <alpha-value>)",
+        // Fixed accent palette (consistent across themes)
         accent: {
           DEFAULT: "#6366f1",
           light: "#818cf8",
@@ -28,9 +33,6 @@ export default {
         "gradient-x": {
           "0%, 100%": { backgroundPosition: "0% 50%" },
           "50%": { backgroundPosition: "100% 50%" },
-        },
-        shimmer: {
-          "100%": { transform: "translateX(100%)" },
         },
       },
       animation: {
